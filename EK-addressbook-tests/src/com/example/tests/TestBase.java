@@ -74,6 +74,7 @@ public class TestBase {
 	    } catch (NoSuchElementException e) {
 	      return false;
 	    }
+	    
 	  }
 
 	private boolean isAlertPresent() {
@@ -99,5 +100,47 @@ public class TestBase {
 	      acceptNextAlert = true;
 	    }
 	  }
+
+	protected void submitContactCreation() {
+		driver.findElement(By.name("submit")).click();
+	}
+
+	protected void fillContactForm(ContactData contact) {
+		driver.findElement(By.name("firstname")).clear();
+	    driver.findElement(By.name("firstname")).sendKeys(contact.firstName);
+	    driver.findElement(By.name("lastname")).clear();
+	    driver.findElement(By.name("lastname")).sendKeys(contact.lastName);
+	    driver.findElement(By.name("address")).clear();
+	    driver.findElement(By.name("address")).sendKeys(contact.address);
+	    driver.findElement(By.name("home")).clear();
+	    driver.findElement(By.name("home")).sendKeys(contact.home);
+	    driver.findElement(By.name("mobile")).clear();
+	    driver.findElement(By.name("mobile")).sendKeys(contact.mobile);
+	    driver.findElement(By.name("work")).clear();
+	    driver.findElement(By.name("work")).sendKeys(contact.work);
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys(contact.email);
+	    driver.findElement(By.name("email2")).clear();
+	    driver.findElement(By.name("email2")).sendKeys(contact.email2);
+	    //new Select(driver.findElement(By.name("bday"))).selectByVisibleText("1");
+	    driver.findElement(By.name("bday")).sendKeys(contact.birthday);
+	    //new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText("January");
+	    driver.findElement(By.name("bmonth")).sendKeys(contact.birthmonth);
+	    driver.findElement(By.name("byear")).clear();
+	    driver.findElement(By.name("byear")).sendKeys(contact.birthyear);
+	    //new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("group name 1");
+	    driver.findElement(By.name("address2")).clear();
+	    driver.findElement(By.name("address2")).sendKeys(contact.address2);
+	    driver.findElement(By.name("phone2")).clear();
+	    driver.findElement(By.name("phone2")).sendKeys(contact.phone2);
+	}
+
+	protected void gotoAddNewPage() {
+		driver.findElement(By.linkText("add new")).click();
+	}
+
+	protected void returnToHomePage() {
+		driver.findElement(By.linkText("home page")).click();
+	}
 
 }
