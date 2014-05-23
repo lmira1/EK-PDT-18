@@ -21,8 +21,8 @@ public class ContactCreationTests extends TestBase {
 	contact.birthday = "1";
 	contact.birthmonth = "January";
 	contact.birthyear = "1111";
-	contact.address2 = "address 2";
-	contact.phone2 = "phone 2";
+	contact.address2 = "address 3";
+	contact.phone2 = "phone 3";
     app.contactHelper.fillContactForm(app, this, contact);
     app.contactHelper.submitContactCreation();
     app.contactHelper.returnToHomePage();
