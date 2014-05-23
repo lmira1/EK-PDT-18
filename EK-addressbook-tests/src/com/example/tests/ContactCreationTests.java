@@ -7,10 +7,10 @@ public class ContactCreationTests extends TestBase {
 
   @Test
   public void testNonEmptyContactCreation() throws Exception {
-    openMainPage();
-    gotoAddNewPage();
+    app.navigationHelper.openMainPage();
+    app.contactHelper.gotoAddNewPage();
     ContactData contact = new ContactData();
-    contact.firstName = "First name 1";
+    contact.firstName = "Svetlana";
 	contact.lastName = "Last name 1";
 	contact.address = "address 1";
 	contact.home = "home 1";
@@ -23,19 +23,19 @@ public class ContactCreationTests extends TestBase {
 	contact.birthyear = "1111";
 	contact.address2 = "address 2";
 	contact.phone2 = "phone 2";
-    fillContactForm(contact);
-    submitContactCreation();
-    returnToHomePage();
+    app.contactHelper.fillContactForm(app, this, contact);
+    app.contactHelper.submitContactCreation();
+    app.contactHelper.returnToHomePage();
     }
   
   @Test
   public void testEmptyContactCreation() throws Exception {
-    openMainPage();
-    gotoAddNewPage();
+    app.navigationHelper.openMainPage();
+    app.contactHelper.gotoAddNewPage();
     ContactData contact = new ContactData();
-    fillContactForm(contact);
-    submitContactCreation();
-    returnToHomePage();
+    app.contactHelper.fillContactForm(app, this, contact);
+    app.contactHelper.submitContactCreation();
+    app.contactHelper.returnToHomePage();
     }
   }
 
