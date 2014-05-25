@@ -1,26 +1,19 @@
 package com.example.fw;
 
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
+	
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 
 
 public class ApplicationManager {
 	
-	public static WebDriver driver;
-	public static String baseUrl;
-	public static boolean acceptNextAlert = true;
-	private static StringBuffer verificationErrors = new StringBuffer();
+	public WebDriver driver;
+	public String baseUrl;
 	
-	public NavigationHelper navigationHelper;
-	public GroupHelper groupHelper;
-	public ContactHelper contactHelper;
+	private NavigationHelper navigationHelper;
+	private GroupHelper groupHelper;
+	private ContactHelper contactHelper;
 
 	
 	public ApplicationManager () {
@@ -30,46 +23,27 @@ public class ApplicationManager {
 	}
 
 	public void stop() {
-		driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      Assert.fail(verificationErrorString);
-	    }
+		driver.quit();   
 	}
 	
-	public boolean isElementPresent(By by) {
-	    try {
-	      driver.findElement(by);
-	      return true;
-	    } catch (NoSuchElementException e) {
-	      return false;
-	    }
-	 }
-
-	public String closeAlertAndGetItsText() {
-	    try {
-	      Alert alert = driver.switchTo().alert();
-	      String alertText = alert.getText();
-	      if (acceptNextAlert) {
-	        alert.accept();
-	      } else {
-	        alert.dismiss();
-	      }
-	      return alertText;
-	    } finally {
-	      acceptNextAlert = true;
-	    }
-	  }
-
-	public boolean isAlertPresent() {
-	    try {
-	      driver.switchTo().alert();
-	      return true;
-	    } catch (NoAlertPresentException e) {
-	      return false;
-	    }
-	  }
-
+	public NavigationHelper getNavigationHelper(){
+		if (navigationHelper == null) {
+			navigationHelper = new NavigationHelper(this);
+		}
+		return navigationHelper;
+	}
 	
-
+	public GroupHelper getGroupHelper(){
+		if (groupHelper == null) {
+			groupHelper = new GroupHelper(this);
+		}
+		return groupHelper;
+	}
+	
+	public ContactHelper getContactHelper(){
+		if (contactHelper == null) {
+			contactHelper = new ContactHelper(this);
+		}
+		return contactHelper;
+	}
 }

@@ -3,50 +3,45 @@ package com.example.fw;
 import org.openqa.selenium.By;
 
 import com.example.tests.ContactData;
-import com.example.tests.TestBase;
 
-public class ContactHelper {
+public class ContactHelper extends HelperBase {
 	
-	public void gotoAddNewPage() {
-		ApplicationManager.driver.findElement(By.linkText("add new")).click();
+	public ContactHelper(ApplicationManager manager) {
+		super(manager);
+		
 	}
 
-	public void fillContactForm(ApplicationManager applicationManager, TestBase testBase, ContactData contact) {
-		ApplicationManager.driver.findElement(By.name("firstname")).clear();
-	    ApplicationManager.driver.findElement(By.name("firstname")).sendKeys(contact.firstName);
-	    ApplicationManager.driver.findElement(By.name("lastname")).clear();
-	    ApplicationManager.driver.findElement(By.name("lastname")).sendKeys(contact.lastName);
-	    ApplicationManager.driver.findElement(By.name("address")).clear();
-	    ApplicationManager.driver.findElement(By.name("address")).sendKeys(contact.address);
-	    ApplicationManager.driver.findElement(By.name("home")).clear();
-	    ApplicationManager.driver.findElement(By.name("home")).sendKeys(contact.home);
-	    ApplicationManager.driver.findElement(By.name("mobile")).clear();
-	    ApplicationManager.driver.findElement(By.name("mobile")).sendKeys(contact.mobile);
-	    ApplicationManager.driver.findElement(By.name("work")).clear();
-	    ApplicationManager.driver.findElement(By.name("work")).sendKeys(contact.work);
-	    ApplicationManager.driver.findElement(By.name("email")).clear();
-	    ApplicationManager.driver.findElement(By.name("email")).sendKeys(contact.email);
-	    ApplicationManager.driver.findElement(By.name("email2")).clear();
-	    ApplicationManager.driver.findElement(By.name("email2")).sendKeys(contact.email2);
-	    //new Select(driver.findElement(By.name("bday"))).selectByVisibleText("1");
-	    ApplicationManager.driver.findElement(By.name("bday")).sendKeys(contact.birthday);
-	    //new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText("January");
-	    ApplicationManager.driver.findElement(By.name("bmonth")).sendKeys(contact.birthmonth);
-	    ApplicationManager.driver.findElement(By.name("byear")).clear();
-	    ApplicationManager.driver.findElement(By.name("byear")).sendKeys(contact.birthyear);
-	    //new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("group name 1");
-	    ApplicationManager.driver.findElement(By.name("address2")).clear();
-	    ApplicationManager.driver.findElement(By.name("address2")).sendKeys(contact.address2);
-	    ApplicationManager.driver.findElement(By.name("phone2")).clear();
-	    ApplicationManager.driver.findElement(By.name("phone2")).sendKeys(contact.phone2);
+	public void gotoAddNewPage() {
+		click(By.linkText("add new"));
 	}
+
+	public void fillContactForm(ContactData contact) {
+	    type(By.name("firstname"), contact.firstName);
+	    type(By.name("lastname"), contact.lastName);
+	    type(By.name("address"), contact.address);
+	    type(By.name("home"), contact.home);
+	    type(By.name("mobile"), contact.mobile);
+	    type(By.name("work"), contact.work);
+	    type(By.name("email"), contact.email);
+	    type(By.name("email2"), contact.email2);
+	    //type(By.name("bday"), contact.birthday);
+	    selectByText(By.name("bday"), contact.birthday);
+	    //type(By.name("bmonth"), contact.birthmonth);
+	    selectByText(By.name("bmonth"), contact.birthmonth);
+	    type(By.name("byear"), contact.birthyear);
+	    //selectByText(By.name("new_group"), "group 1");
+	    type(By.name("address2"), contact.address2);
+	    type(By.name("phone2"), contact.phone2);
+	}
+
+	
 
 	public void submitContactCreation() {
-		ApplicationManager.driver.findElement(By.name("submit")).click();
+		click(By.name("submit"));
 	}
 
 	public void returnToHomePage() {
-		ApplicationManager.driver.findElement(By.linkText("home page")).click();
+		click(By.linkText("home page"));
 	}
 
 	
