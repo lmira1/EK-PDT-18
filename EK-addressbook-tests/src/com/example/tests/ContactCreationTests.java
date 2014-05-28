@@ -25,17 +25,16 @@ public class ContactCreationTests extends TestBase {
 	contact.phone2 = "phone 2";
     app.getContactHelper().fillContactForm(contact);
     app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToHomePage();
+    app.getNavigationHelper().returnToHomePage();
     }
   
   @Test
   public void testEmptyContactCreation() throws Exception {
     app.getNavigationHelper().openMainPage();
     app.getContactHelper().gotoAddNewPage();
-    ContactData contact = new ContactData();
-    app.getContactHelper().fillContactForm(contact);
+    app.getContactHelper().fillContactForm(new ContactData ());
     app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToHomePage();
+    app.getNavigationHelper().returnToHomePage();
     }
   }
 
