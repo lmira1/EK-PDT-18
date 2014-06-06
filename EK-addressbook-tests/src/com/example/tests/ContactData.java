@@ -1,6 +1,6 @@
 package com.example.tests;
 
-public class ContactData {
+public class ContactData implements Comparable<ContactData> {
 	public String firstName;
 	public String lastName;
 	public String address;
@@ -14,6 +14,7 @@ public class ContactData {
 	public String birthyear;
 	public String address2;
 	public String phone2;
+	//public String fullName;
 
 	public ContactData() {
 	}
@@ -24,6 +25,7 @@ public class ContactData {
 			String birthyear, String address2, String phone2) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		//this.fillFullName();
 		this.address = address;
 		this.home = home;
 		this.mobile = mobile;
@@ -36,4 +38,48 @@ public class ContactData {
 		this.address2 = address2;
 		this.phone2 = phone2;
 	}
+	
+	@Override
+	public String toString() {
+		return "ContactData [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", home="
+	        + home + ", mobile=" + mobile + ", work=" + work + ", email=" + email + ", email2=" + email2 + ", birthday="
+			+ birthday + ", birthmonth=" + birthmonth + ", birthyear=" + birthyear + ", address2=" + address2 + ", phone2="
+			+ phone2 + "]";
+	
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		//result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContactData other = (ContactData) obj;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		return true;
+	}
+	
+	@Override
+	public int compareTo(ContactData other) {
+		return this.firstName.toLowerCase().compareTo(other.firstName.toLowerCase());
+	}
+
+	//public void fillFullName() {
+	//	this.fullName = this.firstName + " " + this.lastName;
+	//}
+		
 }
