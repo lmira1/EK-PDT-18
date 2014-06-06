@@ -12,8 +12,9 @@
 hs_err_pid*
 
 
-*test-output
-.settings
+test-output/
+.settings/
 
 
 .gitignore
+
