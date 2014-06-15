@@ -11,21 +11,19 @@ public class ContactRemovalTests extends TestBase{
 
 	@Test
 	public void deleteSomeContact() {
-		app.getNavigationHelper().openMainPage();
-	    app.getNavigationHelper().goToHomePage();
-	    
-	  //save old state
+		
+		//save old state
 	    List<ContactData> oldList = app.getContactHelper().getContacts();
 	    
 	    Random rnd = new Random();
 	    int index = rnd.nextInt(oldList.size()-1);
 	    
-	    app.getContactHelper().selectContactByIndex(index);
-	    app.getContactHelper().deleteContact();
-		app.getNavigationHelper().returnToHomePage();
+	    //actions
+	    app.getContactHelper().removeContact(index);
+	    
 		
 		//save new state
-	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    List<ContactData> newList = app.getContactHelper().getContacts();
 	
 	    //compare states
 	    assertEquals(newList.size(), oldList.size() - 1);
