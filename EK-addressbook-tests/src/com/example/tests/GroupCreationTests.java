@@ -1,19 +1,28 @@
 package com.example.tests;
 
-import java.util.Collections;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.example.utils.SortedListOf;
 
-import static org.testng.Assert.assertEquals;
+import static com.example.tests.GroupDataGenerator.loadGroupsFromCSVFile;
+import static com.example.tests.GroupDataGenerator.loadGroupsFromXMLFile;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class GroupCreationTests extends TestBase {
 	
+	@DataProvider
+	public Iterator<Object[]> groupsFromFile() throws IOException {
+		return wrapGroupsForDataProvider(loadGroupsFromXMLFile(new File ("groups.xml"))).iterator();
+	}	
 	
-	
-  @Test(dataProvider =  "randomValidGroupGenerator")
+
+@Test(dataProvider =  "groupsFromFile")
   public void testGroupCreationWithValidData(GroupData group) throws Exception {
 	
     //save old state
@@ -30,10 +39,5 @@ public class GroupCreationTests extends TestBase {
     //compare states
     assertThat(newList, equalTo(oldList.withAdded(group)));
     
-    //assertEquals(newList.size(), oldList.size() + 1);
-    //oldList.add(group);
-    //Collections.sort(oldList);
-    //assertEquals(newList, oldList);
   }
-  
 }
