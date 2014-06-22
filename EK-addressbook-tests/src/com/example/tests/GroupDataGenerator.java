@@ -15,7 +15,7 @@ import com.thoughtworks.xstream.XStream;
 public class GroupDataGenerator {
 
 	public static void main(String[] args) throws IOException {
-		if (args.length >3){
+		if (args.length < 3){
 			System.out.println("Please specify parameters: <amount of test data> <file> <format>");
 			return;
 		}
