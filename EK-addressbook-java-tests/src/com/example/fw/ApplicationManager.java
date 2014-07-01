@@ -26,6 +26,7 @@ public class ApplicationManager {
 	}
 
 	public void stop() {
+		getApplication().requestClose();
 	}
 	
 	public void setProperties (Properties props){
