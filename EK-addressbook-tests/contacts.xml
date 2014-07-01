@@ -1,0 +1,26 @@
+<list>
+  <com.example.tests.ContactData>
+    <firstName>test462362723</firstName>
+    <lastName></lastName>
+    <address>test890521443</address>
+    <home>test-1676341605</home>
+    <mobile>test-1045164327</mobile>
+    <work></work>
+    <email></email>
+    <email2>test1406836991</email2>
+    <address2>test-46300078</address2>
+    <phone2></phone2>
+  </com.example.tests.ContactData>
+  <com.example.tests.ContactData>
+    <firstName></firstName>
+    <lastName>test-1311381295</lastName>
+    <address></address>
+    <home></home>
+    <mobile>test1488837886</mobile>
+    <work>test1353932111</work>
+    <email></email>
+    <email2>test-2020202766</email2>
+    <address2></address2>
+    <phone2>test976191799</phone2>
+  </com.example.tests.ContactData>
+</list>
