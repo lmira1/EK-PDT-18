@@ -26,18 +26,31 @@ public class GroupCreationTests extends TestBase {
   public void testGroupCreationWithValidData(GroupData group) throws Exception {
 	
     //save old state
-	 SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
-    
+	 SortedListOf<GroupData> oldList = app.getModel().getGroups();
+	 //SortedListOf<GroupData> oldList = app.getGroupHelper().getUIGroups();
     
     //actions
     app.getGroupHelper().createGroup(group);
     
     
     //save new state
-    SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+    SortedListOf<GroupData> newList = app.getModel().getGroups();
     
-    //compare states
+    //compare states - correct modification of the model
     assertThat(newList, equalTo(oldList.withAdded(group)));
     
-  }
+    if ("yes".equals(app.getProperty("check.db"))) {
+    	if (wantToCheck()) {
+    //compare model with data in DB
+    assertThat(app.getModel().getGroups(), equalTo(app.getHibernateHelper().listGroups()));
+    	}
+    }
+    
+    if ("yes".equals(app.getProperty("check.ui"))) {
+    	if (wantToCheck()) {
+    //compare model with UI data
+    assertThat(app.getModel().getGroups(), equalTo(app.getGroupHelper().getUIGroups()));
+    	}
+    }
+   }
 }
