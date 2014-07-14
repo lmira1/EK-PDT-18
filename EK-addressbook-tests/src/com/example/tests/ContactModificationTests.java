@@ -13,7 +13,8 @@ public class ContactModificationTests extends TestBase{
 	public void modifySomeContact(ContactData contact) {
 		
 	    //save old state
-	    List<ContactData> oldList = app.getContactHelper().getContacts();
+	    //List<ContactData> oldList = app.getContactHelper().getContacts();
+		List<ContactData> oldList = app.getHibernateHelper().listContacts();
 	    
 	    Random rnd = new Random();
 	    int index = rnd.nextInt(oldList.size()-1);
