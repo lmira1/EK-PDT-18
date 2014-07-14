@@ -82,9 +82,9 @@ public class ContactHelper extends WebDriverHelperBase {
 	    type(By.name("work"), contact.getWork());
 	    type(By.name("email"), contact.getEmail());
 	    type(By.name("email2"), contact.getEmail2());
-	    selectByText(By.name("bday"), contact.getBirthDay());
-	    selectByText(By.name("bmonth"), contact.getBirthMonth());
-	    type(By.name("byear"), contact.getBirthYear());
+	    selectByText(By.name("bday"), contact.getBirthday());
+	    selectByText(By.name("bmonth"), contact.getBirthmonth());
+	    type(By.name("byear"), contact.getBirthyear());
 	    //if (formType == CREATION) {
 	    	//selectByText(By.name("new_group"), "group 1");
 	    //} else

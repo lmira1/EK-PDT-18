@@ -2,6 +2,8 @@ package com.example.tests;
 
 import static com.example.tests.ContactDataGenerator.loadContactsFromCSVFile;
 import static com.example.tests.ContactDataGenerator.loadContactsFromXMLFile;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 import static org.testng.Assert.assertEquals;
 
 import java.io.File;
@@ -27,7 +29,8 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreationWithValidData(ContactData contact) throws Exception {
     
     //save old state
-    List<ContactData> oldList = app.getContactHelper().getContacts();
+    //List<ContactData> oldList = app.getContactHelper().getContacts();
+    List<ContactData> oldList = app.getHibernateHelper().listContacts();
     
     //actions
     app.getContactHelper().createContact(contact);
@@ -35,13 +38,11 @@ public class ContactCreationTests extends TestBase {
     
     //save new state
     List<ContactData> newList = app.getContactHelper().getContacts();
+    //List<ContactData> newList = app.getHibernateHelper().listContacts();
     
     //compare states
     assertEquals(newList.size(), oldList.size() + 1);
-    
-    //oldList.add(contact);
-    //Collections.sort(oldList);
-    //assertEquals(newList, oldList);
+   
     
   	}
   }

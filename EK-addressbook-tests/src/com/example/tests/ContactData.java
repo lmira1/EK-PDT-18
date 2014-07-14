@@ -1,6 +1,7 @@
 package com.example.tests;
 
 public class ContactData implements Comparable<ContactData> {
+	private String id;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -25,7 +26,6 @@ public class ContactData implements Comparable<ContactData> {
 			String birthyear, String address2, String phone2) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		//this.fillFullName();
 		this.address = address;
 		this.home = home;
 		this.mobile = mobile;
@@ -77,7 +77,12 @@ public class ContactData implements Comparable<ContactData> {
 	public int compareTo(ContactData other) {
 		return this.firstName.toLowerCase().compareTo(other.firstName.toLowerCase());
 	}
-
+	
+	public ContactData withID(String id) {
+		this.id = id;
+		return this;
+	}
+	
 	public ContactData withFirstName(String firstName) {
 		this.firstName = firstName;
 		return this;
@@ -142,8 +147,11 @@ public class ContactData implements Comparable<ContactData> {
 		this.phone2 = phone2;
 		return this;
 	}
-
 	
+	public String getId() {
+		return id;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -184,17 +192,17 @@ public class ContactData implements Comparable<ContactData> {
 	}
 
 	
-	public String getBirthDay() {
+	public String getBirthday() {
 		return birthday;
 	}
 
 	
-	public String getBirthMonth() {
+	public String getBirthmonth() {
 		return birthmonth;
 	}
 
 	
-	public String getBirthYear() {
+	public String getBirthyear() {
 		return birthyear;
 	}
 
@@ -208,5 +216,61 @@ public class ContactData implements Comparable<ContactData> {
 		return phone2;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setHome(String home) {
+		this.home = home;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public void setWork(String work) {
+		this.work = work;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public void setBirthmonth(String birthmonth) {
+		this.birthmonth = birthmonth;
+	}
+
+	public void setBirthyear(String birthyear) {
+		this.birthyear = birthyear;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+	
 	
 }
